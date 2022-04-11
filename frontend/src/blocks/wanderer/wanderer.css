@@ -1,0 +1,19 @@
+.wanderer {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin-bottom: 51px;
+    align-items: center;
+}
+
+@media screen and (max-width: 680px) {
+    .wanderer {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 424px) {
+    .wanderer {
+        margin-bottom: 36px;
+    }
+}

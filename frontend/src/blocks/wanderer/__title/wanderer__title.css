@@ -1,0 +1,10 @@
+.wanderer__title {
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media screen and (max-width: 424px) {
+    .wanderer__title {
+        justify-content: center;
+    }
+}

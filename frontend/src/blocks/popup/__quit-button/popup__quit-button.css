@@ -1,0 +1,28 @@
+.popup__quit-button {
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    background-image: url(../../../images/Close-Icon.svg);
+    min-height: 32px;
+    min-width: 32px;
+    background-size: cover;
+    background-position: center;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    transition: ease-in-out .4s;
+    cursor: pointer;
+}
+
+.popup__quit-button:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 600px) {
+    .popup__quit-button {
+        min-height: 20px;
+        min-width: 20px;
+        right: 0;
+        top: -36px;
+    }
+}

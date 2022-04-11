@@ -1,0 +1,22 @@
+.wanderer__name {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 1.14;
+    color: #fff;
+    max-width: 294px;
+    margin: 0 18px 0 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 424px) {
+    .wanderer__name {
+        font-size: 27px;
+        line-height: 1.22;
+        text-align: center;
+        margin: 0 10px 0 25px;
+        max-width: 189px;
+    }
+}

@@ -1,0 +1,11 @@
+.wanderer__info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 22px;
+}
+
+@media screen and (max-width: 484px) {
+    .wanderer__info {
+        align-items: center;
+    }
+}

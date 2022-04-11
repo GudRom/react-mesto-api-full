@@ -1,0 +1,10 @@
+.wanderer__author {
+    display: flex;
+}
+
+@media screen and (max-width: 484px) {
+    .wanderer__author {
+        flex-direction: column;
+        align-items: center;
+    }
+}

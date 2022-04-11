@@ -1,0 +1,16 @@
+.place__like {
+    background-image: url(../../../images/Group.svg);
+    transition: ease-in .3s;
+    cursor: pointer;
+    justify-self: center;
+    align-self: center;
+    border: none;
+    height: 19px;
+    width: 22px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0;
+}
+
+.place__like:hover {
+    opacity: .5;
+}

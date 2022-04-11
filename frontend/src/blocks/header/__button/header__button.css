@@ -1,0 +1,15 @@
+.header__button {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.22;
+  border: none;
+  background-color: black;
+  color: #a9a9a9;
+  cursor: pointer;
+  padding: 0 0 46px 0;
+  transition: ease-in-out 0.4s;
+}
+
+.header__button:hover {
+  opacity: 0.6;
+}
