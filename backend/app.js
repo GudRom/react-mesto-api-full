@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
+const cors = require('cors');
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -17,6 +18,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors({
+  origin: 'http://themestechko.students.nomoredomains.work',
+  credentials: true,
+}));
 app.use(requestLogger);
 
 app.post('/signup', validations.signupValidate, createUser);
