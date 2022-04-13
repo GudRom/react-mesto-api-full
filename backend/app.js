@@ -19,13 +19,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors({
-  origin: 'http://themestechko.students.nomoredomains.work',
+  origin: ['https://themestechko.students.nomoredomains.work', 'http://themestechko.students.nomoredomains.work', 'http://localhost:3000'],
   credentials: true,
 }));
 app.use(requestLogger);
 
-app.post('/signup', validations.signupValidate, createUser);
-app.post('/signin', validations.signinValidate, login);
+app.post('/sign-up', validations.signupValidate, createUser);
+app.post('/sign-in', validations.signinValidate, login);
 app.use(auth);
 app.use('/cards', require('./routes/cards'));
 app.use('/users', require('./routes/users'));
