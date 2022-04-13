@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -24,6 +25,11 @@ app.use(cors({
 }));
 app.use(requestLogger);
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.post('/sign-up', validations.signupValidate, createUser);
 app.post('/sign-in', validations.signinValidate, login);
 app.use(auth);
