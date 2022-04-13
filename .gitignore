@@ -6,15 +6,15 @@ logs
 npm-debug.log*
 
 # dependencies
-/node_modules
-/.pnp
+node_modules
+.pnp
 .pnp.js
 
 # testing
 /coverage
 
 # production
-/build
+build
 
 # Optional npm cache directory
 .npm
