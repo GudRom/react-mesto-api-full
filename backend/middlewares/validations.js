@@ -13,7 +13,7 @@ const signupValidate = celebrate({
       return value;
     }),
     // eslint-disable-next-line consistent-return
-    password: Joi.string().required().min(8).messages({
+    password: Joi.string().required().messages({
       'any.required': 'Пароль не указан',
       'string.min': 'Короткий пароль',
     }),
@@ -25,7 +25,7 @@ const signupValidate = celebrate({
       }
       return value;
     }),
-  }).unknown(true),
+  }),
 });
 
 const signinValidate = celebrate({
@@ -38,23 +38,23 @@ const signinValidate = celebrate({
       return value;
     }),
     // eslint-disable-next-line consistent-return
-    password: Joi.string().required().min(8).messages({
+    password: Joi.string().required().messages({
       'any.required': 'Пароль не указан',
       'string.min': 'Короткий пароль',
     }),
-  }).unknown(true),
+  }),
 });
 
 const userInfoValidate = celebrate({
   [Segments.BODY]: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
+    name: Joi.string().min(2).max(30).required(),
+    about: Joi.string().min(2).max(30).required(),
   }),
 });
 
 const userAvatarValidate = celebrate({
   [Segments.BODY]: Joi.object().keys({
-    avatar: Joi.string().custom((value, helper) => {
+    avatar: Joi.string().required().custom((value, helper) => {
       if (!regex.test(value)) {
         return helper.error('string.notURL');
       }
@@ -65,7 +65,7 @@ const userAvatarValidate = celebrate({
 
 const userIdValidate = celebrate({
   [Segments.PARAMS]: Joi.object().keys({
-    userId: Joi.string().required().hex(),
+    userId: Joi.string().required().hex().length(24),
   }),
 });
 
@@ -79,12 +79,12 @@ const cardValidate = celebrate({
       }
       return value;
     }),
-  }).unknown(true),
+  }),
 });
 
 const cardIdValidate = celebrate({
   [Segments.PARAMS]: Joi.object().keys({
-    cardId: Joi.string().required().hex(),
+    cardId: Joi.string().required().hex().length(24),
   }),
 });
 

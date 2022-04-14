@@ -1,9 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
 
@@ -18,7 +16,6 @@ const NotFoundError = require('./errors/NotFoundError');
 mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(cors({
   origin: ['https://themestechko.students.nomoredomains.work', 'http://themestechko.students.nomoredomains.work', 'http://localhost:3000'],
   credentials: true,
@@ -30,13 +27,12 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-app.post('/sign-up', validations.signupValidate, createUser);
-app.post('/sign-in', validations.signinValidate, login);
+app.post('/signup', validations.signupValidate, createUser);
+app.post('/signin', validations.signinValidate, login);
 app.use(auth);
 app.use('/cards', require('./routes/cards'));
 app.use('/users', require('./routes/users'));
 
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(errorLogger);
 app.use(errors());
 // eslint-disable-next-line no-unused-vars
