@@ -1,16 +1,16 @@
 class Api {
-    constructor({
-        address,
-        token
-    }) {
+    constructor({ address }) {
         this.address = address;
-        this.token = token;
+    }
+
+    getToken = () => {
+        return `Bearer ${localStorage.getItem('token')}`;
     }
 
     getUserInfo() {
         return fetch(`${this.address}/users/me`, {
                 headers: {
-                    authorization: this.token
+                    authorization: this.getToken(),
                 }
             })
             .then(res => this._checkResult(res))
@@ -19,7 +19,7 @@ class Api {
     getCards() {
         return fetch(`${this.address}/cards`, {
                 headers: {
-                    authorization: this.token
+                    authorization: this.getToken(),
                 }
             })
             .then(res => this._checkResult(res))
@@ -29,7 +29,7 @@ class Api {
         return fetch(`${this.address}/cards`, {
             method: 'POST',
             headers: {
-                authorization: this.token,
+                authorization: this.getToken(),
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -44,7 +44,7 @@ class Api {
         return fetch(`${this.address}/users/me`, {
             method: 'PATCH',
             headers: {
-                authorization: this.token,
+                authorization: this.getToken(),
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -59,7 +59,7 @@ class Api {
         return fetch(`${this.address}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
-                authorization: this.token,
+                authorization: this.getToken(),
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -73,7 +73,7 @@ class Api {
         return fetch(`${this.address}/cards/${cardId}`, {
                 method: 'DELETE',
                 headers: {
-                    authorization: this.token,
+                    authorization: this.getToken(),
                     'Content-Type': 'application/json'
                 }
             })
@@ -85,7 +85,7 @@ class Api {
         return fetch(`${this.address}/cards/${cardId}/likes`, {
                 method: 'PUT',
                 headers: {
-                    authorization: this.token,
+                    authorization: this.getToken(),
                     'Content-Type': 'application/json'
                 }
             })
@@ -94,7 +94,7 @@ class Api {
             return fetch(`${this.address}/cards/${cardId}/likes`, {
                 method: 'DELETE',
                 headers: {
-                    authorization: this.token,
+                    authorization: this.getToken(),
                     'Content-Type': 'application/json'
                 }
             })
@@ -112,8 +112,7 @@ class Api {
 }
 
 const configK = {
-    address: 'https://mesto.nomoreparties.co/v1/cohort-32',
-    token: 'e7c53c8e-b5d8-4719-b07e-61d4790752fd'
+    address: 'http://api.themestechko.students.nomoredomains.work',
 }
 
 const api = new Api(configK);

@@ -1,4 +1,4 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "http://api.themestechko.students.nomoredomains.work";
 
 const HEADERS = {
   Accept: "application/json",
