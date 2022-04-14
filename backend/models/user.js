@@ -8,6 +8,10 @@ function avaValidator(value) {
   return regex.test(value);
 }
 
+function emValidator(value) {
+  return validator.isEmail(value);
+}
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -29,7 +33,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    validate: validator.isEmail(value),
+    validate: emValidator,
     unique: true,
   },
   password: {
