@@ -51,13 +51,13 @@ function App() {
   }, [loggedIn, navigate]);
 
   React.useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
+    if (localStorage.getItem("jwt")) {
+      const token = localStorage.getItem("jwt");
       auth.checkToken(token)
       .then((res) => {
         if (res) {
           setLoggedIn(true);
-          setEmails(res.data.email);
+          setEmails(res.email);
         }
       });
     }
@@ -89,7 +89,7 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((user) => user._id === currentUser._id);
+    const isLiked = card.likes.some((user) => user === currentUser._id);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
@@ -146,7 +146,7 @@ function App() {
     auth
       .authorize(formData.email, formData.password)
       .then((data) => {
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('jwt', data.jwt);
         setLoggedIn(true);
         navigate("/main");
       })
@@ -170,7 +170,7 @@ function App() {
 
   function logout() {
     setLoggedIn(false);
-    localStorage.removeItem('token');
+    localStorage.removeItem('jwt');
     navigate("/sign-in");
   }
 

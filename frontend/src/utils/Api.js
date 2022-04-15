@@ -4,7 +4,7 @@ class Api {
     }
 
     getToken = () => {
-        return `Bearer ${localStorage.getItem('token')}`;
+        return `Bearer ${localStorage.getItem('jwt')}`;
     }
 
     getUserInfo() {
@@ -112,7 +112,7 @@ class Api {
 }
 
 const configK = {
-    address: 'http://api.themestechko.students.nomoredomains.work',
+    address: 'https://api.themestechko.students.nomoredomains.work',
 }
 
 const api = new Api(configK);
