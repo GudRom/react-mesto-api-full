@@ -61,7 +61,7 @@ function App() {
         }
       });
     }
-  }, []);
+  }, [loggedIn]);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -170,6 +170,7 @@ function App() {
 
   function logout() {
     setCards([]);
+    setEmails([]);
     setCurrentUser({});
     setLoggedIn(false);
     localStorage.removeItem('jwt');
