@@ -35,14 +35,14 @@ function App() {
       .getCards()
       .then((card) => setCards(card))
       .catch((err) => console.log(err));
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     api
       .getUserInfo()
       .then((info) => setCurrentUser(info))
       .catch((err) => console.log(err));
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     if (loggedIn) {
@@ -169,6 +169,8 @@ function App() {
   }
 
   function logout() {
+    setCards([]);
+    setCurrentUser({});
     setLoggedIn(false);
     localStorage.removeItem('jwt');
     navigate("/sign-in");
